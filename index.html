@@ -12,8 +12,8 @@
         :root {
             --bg-main: #f8fafc;
             --bg-card: #ffffff;
-            --primary-blue: #0284c7; /* Dark Blue */
-            --accent-yellow: #d4af37; /* Dark Golden Yellow */
+            --primary-blue: #0284c7;
+            --accent-yellow: #d4af37;
             --text-dark: #0284c7;
             --text-muted: #334155;
             --border-color: #cbd5e1;
@@ -21,13 +21,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { 
-            background-color: var(--bg-main); 
-            color: var(--text-dark); 
-            line-height: 1.6; 
-            overflow-x: hidden; 
-            position: relative; 
-        }
+        body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; position: relative; }
 
         /* MOUSE CLICK CIRCLE ANIMATION */
         .click-circle-effect {
@@ -46,55 +40,25 @@
             100% { opacity: 0; transform: translate(-50%, -50%) scale(2.5); }
         }
 
-        /* LEFT SIDEBAR FIXED SOCIAL TABS (ONLY WHATSAPP) */
+        /* LEFT SIDEBAR FIXED SOCIAL TABS */
         .left-social-bar {
-            position: fixed;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 9999;
+            position: fixed; left: 15px; top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 12px; z-index: 9999;
         }
         .left-social-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.2rem;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 1.2rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: transform 0.3s ease;
         }
-        .left-social-btn:hover {
-            transform: scale(1.15) translateX(5px);
-        }
+        .left-social-btn:hover { transform: scale(1.15) translateX(5px); }
         .left-social-btn.wa { background: #25D366; }
 
         /* HEADER & LOGO */
         header {
-            background: #ffffff;
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            background: #ffffff; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000;
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
         .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-img {
-            width: 42px; height: 42px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent-yellow);
-        }
+        .logo-img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-yellow); }
         .logo-text h2 { font-size: 1.15rem; font-weight: 800; color: var(--primary-blue); line-height: 1.1; }
         .logo-text span { font-size: 0.7rem; color: var(--accent-yellow); letter-spacing: 1.5px; font-weight: 700; text-transform: uppercase; }
 
@@ -110,24 +74,15 @@
 
         /* HERO SECTION */
         .hero-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem 5%;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 40px;
-            align-items: center;
+            max-width: 1200px; margin: 2rem auto; padding: 2rem 5%;
+            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;
         }
         @media(max-width: 900px) {
             .hero-container { grid-template-columns: 1fr; text-align: center; }
             .hero-btns { justify-content: center; }
         }
-        .hero-badge {
-            background: #f1f5f9; border: 1px solid var(--border-color); color: var(--primary-blue); padding: 5px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; display: inline-block; margin-bottom: 15px; text-transform: uppercase;
-        }
-        .hero-title {
-            font-size: 3rem; font-weight: 900; color: var(--primary-blue); line-height: 1.15; margin-bottom: 1.2rem;
-        }
+        .hero-badge { background: #f1f5f9; border: 1px solid var(--border-color); color: var(--primary-blue); padding: 5px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; display: inline-block; margin-bottom: 15px; text-transform: uppercase; }
+        .hero-title { font-size: 3rem; font-weight: 900; color: var(--primary-blue); line-height: 1.15; margin-bottom: 1.2rem; }
         .hero-title span { color: var(--accent-yellow); }
         .hero-desc { color: var(--primary-blue); font-size: 1rem; margin-bottom: 2rem; line-height: 1.7; }
         
@@ -135,37 +90,15 @@
         .btn-explore { background: var(--primary-blue); color: #fff; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
         .btn-explore:hover { background: var(--accent-yellow); color: var(--primary-blue); }
         .btn-chat-wa { background: #ffffff; color: var(--primary-blue); border: 2px solid var(--border-color); padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
-        .btn-chat-wa:hover { border-color: var(--accent-yellow); color: var(--accent-yellow); }
 
         .hero-image-card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-            border: 1px solid var(--border-color);
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-            height: 380px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #ffffff; border-radius: 20px; padding: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-color); text-align: center; overflow: hidden; position: relative; height: 380px; display: flex; align-items: center; justify-content: center;
         }
-        .hero-image-card img { 
-            width: 100%; 
-            height: 100%; 
-            border-radius: 12px; 
-            object-fit: contain; 
-            position: absolute; 
-            transition: opacity 1s ease-in-out;
-            opacity: 0;
-        }
-        .hero-image-card img.active {
-            opacity: 1;
-        }
+        .hero-image-card img { width: 100%; height: 100%; border-radius: 12px; object-fit: contain; position: absolute; transition: opacity 1s ease-in-out; opacity: 0; }
+        .hero-image-card img.active { opacity: 1; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 1rem 5% 3rem; }
-
         .bank-card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; padding: 1.8rem; margin-bottom: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         .section-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; color: var(--primary-blue); }
 
@@ -180,39 +113,12 @@
         .stat-card h4 { font-size: 1.8rem; color: var(--accent-yellow); font-weight: 800; }
         .stat-card p { font-size: 0.85rem; color: var(--primary-blue); font-weight: 600; }
 
-        /* WATER REFLECTION ANIMATION */
-        @keyframes waterReflect {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
         .product-card { 
-            background: #ffffff; 
-            border-radius: 14px; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column; 
-            position: relative; 
-            border: 2px solid var(--border-color); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
+            background: #ffffff; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; position: relative; 
+            border: 2px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: all 0.3s ease;
         }
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(45deg, rgba(2, 132, 199, 0.03), rgba(212, 175, 55, 0.05), rgba(2, 132, 199, 0.03));
-            background-size: 200% 200%;
-            animation: waterReflect 6s infinite ease-in-out;
-            pointer-events: none;
-        }
-        .product-card:hover { 
-            transform: translateY(-5px); 
-            border-color: var(--accent-yellow);
-            box-shadow: 0 8px 20px rgba(212,175,55,0.15);
-        }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--accent-yellow); box-shadow: 0 8px 20px rgba(212,175,55,0.15); }
 
         .product-img { width: 100%; height: 160px; object-fit: cover; background: #f1f5f9; }
         .product-details { padding: 1rem; display: flex; flex-direction: column; flex-grow: 1; }
@@ -223,26 +129,13 @@
         .stock-in { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
         .stock-sold { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
 
-        .product-desc {
-            color: var(--primary-blue);
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-            max-height: 65px;
-            overflow-y: auto;
-            padding-right: 4px;
-        }
-        .product-desc::-webkit-scrollbar { width: 4px; }
-        .product-desc::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-
+        .product-desc { color: var(--primary-blue); font-size: 0.8rem; margin-bottom: 10px; max-height: 65px; overflow-y: auto; }
         .buy-btn { background: var(--whatsapp-color); color: white; text-decoration: none; padding: 8px; border-radius: 6px; font-weight: 700; text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: auto; border: none; cursor: pointer; font-size: 0.85rem; }
 
-        /* ARTICLES / GUIDES SECTION STYLES */
         .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 1.5rem; }
         .article-card { background: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; }
         .article-card h3 { font-size: 1.1rem; color: var(--primary-blue); font-weight: 800; margin-bottom: 8px; }
         .article-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem; flex-grow: 1; white-space: pre-line; }
-        .read-more-btn { background: #f1f5f9; color: var(--primary-blue); border: 1px solid var(--border-color); padding: 8px 14px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.82rem; text-align: center; display: inline-block; transition: 0.3s; }
-        .read-more-btn:hover { background: var(--primary-blue); color: #fff; }
 
         .feedback-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; margin-top: 20px; }
         .feedback-card { background: #fff; border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
@@ -257,7 +150,7 @@
 </head>
 <body>
 
-    <!-- LEFT SIDEBAR FIXED SOCIAL BUTTON (WHATSAPP ONLY) -->
+    <!-- LEFT SIDEBAR FIXED SOCIAL BUTTON -->
     <div class="left-social-bar">
         <a href="https://wa.me/923030623852" target="_blank" class="left-social-btn wa" title="WhatsApp Direct"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
@@ -266,9 +159,7 @@
     <div id="checkoutModal">
         <div class="modal-box">
             <h3 id="modalProductTitle" style="color: var(--primary-blue); margin-bottom: 10px; font-size: 1.1rem;">Order via WhatsApp</h3>
-            <div style="background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-yellow); margin-bottom: 12px; text-align: left; font-size: 0.8rem;" id="modalBankDetails">
-                <!-- Dynamically loaded -->
-            </div>
+            <div style="background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid var(--accent-yellow); margin-bottom: 12px; text-align: left; font-size: 0.8rem;" id="modalBankDetails"></div>
             <form onsubmit="sendWhatsAppOrder(event)">
                 <input type="text" id="cName" placeholder="Aap Ka Naam" required style="width:100%; padding:8px; margin-bottom:8px; border-radius:6px; border:1px solid var(--border-color); font-size:0.85rem;">
                 <input type="text" id="cPhone" placeholder="WhatsApp Phone Number" required style="width:100%; padding:8px; margin-bottom:12px; border-radius:6px; border:1px solid var(--border-color); font-size:0.85rem;">
@@ -306,7 +197,7 @@
         <button class="btn-admin" onclick="triggerAdminModal()"><i class="fa-solid fa-lock"></i> Admin Panel</button>
     </header>
 
-    <!-- HERO SECTION WITH IMAGE SLIDESHOW -->
+    <!-- HERO SECTION -->
     <section class="hero-container">
         <div>
             <span class="hero-badge">PREMIUM SIGN BOARDS & BRANDING</span>
@@ -319,13 +210,9 @@
         </div>
         <div>
             <div class="hero-image-card" id="heroImageSlider">
-                <img src="https://scontent.flhe4-1.fna.fbcdn.net/v/t39.30808-6/784798172_122103840201453828_6906395798773396747_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x1024&ctp=s960x960&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGIBo0rvjEHW727WoEkq6TA2yuY5FNOJs_bK5jkU04mz_qSWa4X-afbXoh3mXqu_ypHE_jxdPiUlOPej_krnpng&_nc_ohc=wn9Qhj2EMZ8Q7kNvwGU4M3f&_nc_oc=AdpqzjrosqcdTQlLCOv3I5JsG0RWnVRZl8GjW28GxADHrgcs5abOXH1QTmOrGr93n6M&_nc_zt=23&_nc_ht=scontent.flhe4-1.fna&_nc_gid=nH50XqocqA0j3_RthBsdIQ&_nc_ss=7b2a8&oh=00_AQQw9xfYckb7MJTYHLcTu2QiK_0d8p2gf93I_90MqkZsOQ&oe=6AFBDC1C" class="slide-img active" alt="Noor Agency Signboard 1">
-                <img src="https://scontent.flhe4-2.fna.fbcdn.net/v/t39.30808-6/835450298_122117783043453828_6740141769735035799_n.jpg?stp=dst-jpg_tt6&cstp=mx1254x1254&ctp=s206x206&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=714c7a&_nc_eui2=AeHuQmR7DfFDXF80fEJjBdDpONdyvtsf9Bw413K-2x_0HAPPiZXc7yEgfo_bDnLMw7lK4wDTZdIaAHJqG5190ZS3&_nc_ohc=kLYKtH_OheEQ7kNvwGNKiT4&_nc_oc=AdoH9kL6Qu8vrWtawwqX0sgipMWBLhknyJ-EUeypv6miglFR4CQuyvBuBOEj_FWflGs&_nc_zt=23&_nc_ht=scontent.flhe4-2.fna&_nc_gid=YsMywPGWc_nsR4I26i1uyQ&_nc_ss=7b2a8&oh=00_AQRy_iLFw2FBbvh2Hiu7EdRkexcYCSVI993CHu2_tKKtIQ&oe=6AFBEF5E" class="slide-img" alt="Noor Agency Signboard 2">
-                <img src="https://scontent.flhe4-2.fna.fbcdn.net/v/t39.30808-6/825336686_122115797283453828_7746808965484645874_n.jpg?stp=dst-jpg_tt6&cstp=mx1254x1254&ctp=s206x206&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHrKyM2qXGE1tlgFU7lY1O_KRPuSyHleH0pE-5LIeV4fXqZAr0o2beiMDeJdeBhvf6eZipdsn69B9RywM_3ePv0&_nc_ohc=oYKkavLJdbEQ7kNvwGRlr7e&_nc_oc=AdqPZxaB70WF7ti5deq_0J_H_DjB3sNUiSZz2S7FHVxDc47JBIMSOlDRaM1rMe-nrwA&_nc_zt=23&_nc_ht=scontent.flhe4-2.fna&_nc_gid=YsMywPGWc_nsR4I26i1uyQ&_nc_ss=7b2a8&oh=00_AQQ3j_RTPiTKqwIO3dMZw7Y8kf1HrM93RIexRyWRpjSz0w&oe=6AFBFC9F" class="slide-img" alt="Noor Agency Signboard 3">
-                <img src="https://scontent.flhe4-2.fna.fbcdn.net/v/t39.30808-6/825336782_122115205533453828_3145300420786453378_n.jpg?stp=dst-jpg_tt6&cstp=mx1254x1254&ctp=s206x206&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeFejbeqtRU6MPtmpUxaBHRFdluXpwtfD2x2W5enC18PbE6J-8djMI3aWiNG-Dm916MTklFWNWes6n734uzf5bXT&_nc_ohc=s7td2wCHh3MQ7kNvwEVCusd&_nc_oc=Adotb3J_igIxKe8y9ubnJyFv1ZmCI66B4RHo7USzTK1vj92ywUaRKj0knrrJGXirl_s&_nc_zt=23&_nc_ht=scontent.flhe4-2.fna&_nc_gid=YsMywPGWc_nsR4I26i1uyQ&_nc_ss=7b2a8&oh=00_AQSfsV08qRbh3paYUr8wcwssiheJg13cxlM521fN5WaT7w&oe=6AFBF2B7" class="slide-img" alt="Noor Agency Signboard 4">
-                <img src="https://scontent.flhe4-1.fna.fbcdn.net/v/t39.30808-6/818384826_122113412463453828_5868824599153148075_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s206x206&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeGyu89AZDFFC1L3xZKhXWb1tCtkd_xcs1O0K2R3_FyzU0XjTtJs7bDjnMBORt8UQUWNUX1-TOKEELPGBLfFOAH_&_nc_ohc=FEM7Fjv1H1cQ7kNvwEOROHr&_nc_oc=AdpoM2jpTa55w9iuKqBQqvd4r9MSZ5qWk9vxEt7dykrUJaz6-dbe4b2iKrmY-wdy-3U&_nc_zt=23&_nc_ht=scontent.flhe4-1.fna&_nc_gid=YsMywPGWc_nsR4I26i1uyQ&_nc_ss=7b2a8&oh=00_AQSFWkuGwtP63wr3OSymrVOtflRCPHGZUb1Zxy1Ng0kw7A&oe=6AFBE43E" class="slide-img" alt="Noor Agency Signboard 5">
-                <img src="https://scontent.flhe4-2.fna.fbcdn.net/v/t39.30808-6/799788075_122109719241453828_2445159320425125322_n.jpg?stp=c366.0.941.941a_dst-jpg_tt6&cstp=mx941x941&ctp=s206x206&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeGPrK6AVqmvP_seRTk6SYY8iIw568Kg19mIjDnrwqDX2QOJhpN_neqLquYXMcG4qMR5TgkMQ99k9gRIPUPm2JaH&_nc_ohc=hSK6zULLekkQ7kNvwF0DAE2&_nc_oc=AdoyyF65bXWpn05D0PjMVIlzQ8_No5YedPJBsy5-ky1NjqFOReD_a6u_sABngSuCQFU&_nc_zt=23&_nc_ht=scontent.flhe4-2.fna&_nc_gid=YsMywPGWc_nsR4I26i1uyQ&_nc_ss=7b2a8&oh=00_AQQFUPW2rX2KPOqmASfjxeaoKotJxYc_eYpRL7kZDaJXoQ&oe=6AFBF14D" class="slide-img" alt="Noor Agency Signboard 6">
-                <img src="https://scontent.flhe4-2.fna.fbcdn.net/v/t39.30808-6/789314368_122105227635453828_1869427134060633416_n.jpg?stp=c140.0.1122.1122a_dst-jpg_tt6&cstp=mx1122x1122&ctp=s206x206&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=714c7a&_nc_eui2=AeHAfLUSt99Iiv1Rig3v5XTmDTvDGzQ4Gz4NO8MbNDgbPnPW0quT26erI8dOoY60S2XfziPYpJ2D8nn01MKnyhQY&_nc_ohc=zOdgll39BXYQ7kNvwF1zN3W&_nc_oc=Adogb8UwiECHFzw5YHV-UrJ0fcdwKSAhL-UroVh0Y8AK163bkv_oDBnMP0wlwrRLNfc&_nc_zt=23&_nc_ht=scontent.flhe4-2.fna&_nc_gid=zcpYFC1GmDia6lQAtep92A&_nc_ss=7b2a8&oh=00_AQQugujB1-kRffCd4RHxRRfhZokb-l9wSsMeuu62TS-0bw&oe=6AFBE998" class="slide-img" alt="Noor Agency Signboard 7">
+                <img src="https://scontent.flhe4-1.fna.fbcdn.net/v/t39.30808-6/784798172_122103840201453828_6906395798773396747_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x1024&ctp=s960x960&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGIBo0rvjEHW727WoEkq6TA2yuY5FNOJs_bK5jkU04mz_qSWa4X-afbXoh3mXqu_ypHE_jxdPiUlOPej_krnpng&_nc_ohc=wn9Qhj2EMZ8Q7kNvwGU4M3f&_nc_oc=AdpqzjrosqcdTQlLCOv3I5JsG0RWnVRZl8GjW28GxADHrgcs5abOXH1QTmOrGr93n6M&_nc_zt=23&_nc_ht=scontent.flhe4-1.fna&_nc_gid=nH50XqocqA0j3_RthBsdIQ&_nc_ss=7b2a8&oh=00_AQQw9xfYckb7MJTYHLcTu2QiK_0d8p2gf93I_90MqkZsOQ&oe=6AFBDC1C" class="slide-img active" alt="Signboard 1">
+                <img src="https://scontent.flhe4-2.fna.fbcdn.net/v/t39.30808-6/835450298_122117783043453828_6740141769735035799_n.jpg?stp=dst-jpg_tt6&cstp=mx1254x1254&ctp=s206x206&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=714c7a&_nc_eui2=AeHuQmR7DfFDXF80fEJjBdDpONdyvtsf9Bw413K-2x_0HAPPiZXc7yEgfo_bDnLMw7lK4wDTZdIaAHJqG5190ZS3&_nc_ohc=kLYKtH_OheEQ7kNvwGNKiT4&_nc_oc=AdoH9kL6Qu8vrWtawwqX0sgipMWBLhknyJ-EUeypv6miglFR4CQuyvBuBOEj_FWflGs&_nc_zt=23&_nc_ht=scontent.flhe4-2.fna&_nc_gid=YsMywPGWc_nsR4I26i1uyQ&_nc_ss=7b2a8&oh=00_AQRy_iLFw2FBbvh2Hiu7EdRkexcYCSVI993CHu2_tKKtIQ&oe=6AFBEF5E" class="slide-img" alt="Signboard 2">
+                <img src="https://scontent.flhe4-2.fna.fbcdn.net/v/t39.30808-6/825336686_122115797283453828_7746808965484645874_n.jpg?stp=dst-jpg_tt6&cstp=mx1254x1254&ctp=s206x206&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=50ad20&_nc_eui2=AeHrKyM2qXGE1tlgFU7lY1O_KRPuSyHleH0pE-5LIeV4fXqZAr0o2beiMDeJdeBhvf6eZipdsn69B9RywM_3ePv0&_nc_ohc=oYKkavLJdbEQ7kNvwGRlr7e&_nc_oc=AdqPZxaB70WF7ti5deq_0J_H_DjB3sNUiSZz2S7FHVxDc47JBIMSOlDRaM1rMe-nrwA&_nc_zt=23&_nc_ht=scontent.flhe4-2.fna&_nc_gid=YsMywPGWc_nsR4I26i1uyQ&_nc_ss=7b2a8&oh=00_AQQ3j_RTPiTKqwIO3dMZw7Y8kf1HrM93RIexRyWRpjSz0w&oe=6AFBFC9F" class="slide-img" alt="Signboard 3">
             </div>
         </div>
     </section>
@@ -335,9 +222,7 @@
         <!-- OFFICIAL BANK DETAILS DISPLAY -->
         <div class="bank-card">
             <h3 style="color: var(--primary-blue); margin-bottom: 8px; font-size: 1.1rem;"><i class="fa-solid fa-wallet" style="color:var(--accent-yellow);"></i> Payment Methods & Bank Accounts</h3>
-            <div id="bankDetailsDisplay" style="font-size: 0.9rem; color: var(--primary-blue);">
-                <!-- Dynamic bank list -->
-            </div>
+            <div id="bankDetailsDisplay" style="font-size: 0.9rem; color: var(--primary-blue);"></div>
         </div>
 
         <!-- PROTECTED MASTER ADMIN PANEL -->
@@ -347,22 +232,13 @@
                 <button onclick="closeAdminPanel()" style="background:#ef4444; color:#fff; border:none; padding:6px 12px; border-radius:6px; cursor:pointer;">Logout</button>
             </div>
 
-            <!-- ANALYTICS TAB -->
+            <!-- ANALYTICS -->
             <div class="admin-box">
                 <h3 style="margin-bottom: 10px; color: var(--accent-yellow); font-size: 1.1rem;"><i class="fa-solid fa-chart-line"></i> Daily Customer Analytics & Activity Logs</h3>
                 <div class="stats-grid">
-                    <div class="stat-card">
-                        <h4 id="statVisitorsDisplay">1</h4>
-                        <p>Total Visitors</p>
-                    </div>
-                    <div class="stat-card">
-                        <h4 id="statSearchesDisplay">0</h4>
-                        <p>Total Searches</p>
-                    </div>
-                    <div class="stat-card">
-                        <h4 id="statTopProductDisplay" style="font-size: 1rem; color:#16a34a;">3D LED Letter Sign</h4>
-                        <p>Most Searched Item</p>
-                    </div>
+                    <div class="stat-card"><h4 id="statVisitorsDisplay">1</h4><p>Total Visitors</p></div>
+                    <div class="stat-card"><h4 id="statSearchesDisplay">0</h4><p>Total Searches</p></div>
+                    <div class="stat-card"><h4 id="statTopProductDisplay" style="font-size: 1rem; color:#16a34a;">3D LED Letter Sign</h4><p>Most Searched</p></div>
                 </div>
             </div>
 
@@ -388,10 +264,8 @@
                     <input type="hidden" id="pExistingImg" value="">
                     <input type="text" id="pTitle" placeholder="Product Title (e.g. 3D LED Sign Board)" required>
                     <input type="text" id="pCost" placeholder="Price (e.g. Rs. 8,500)" required>
-                    
-                    <label style="font-size: 0.85rem; font-weight: bold; color: var(--primary-blue); display: block; margin-bottom: 4px;">Choose Product Image from Gallery (Cloud Safe Base64):</label>
+                    <label style="font-size: 0.85rem; font-weight: bold; color: var(--primary-blue); display: block; margin-bottom: 4px;">Choose Product Image:</label>
                     <input type="file" id="pImageFile" accept="image/*" style="width: 100%; padding: 8px; margin-bottom: 12px; background: #fff; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.85rem;">
-
                     <input type="number" id="pInStock" placeholder="In Stock Quantity" required>
                     <input type="number" id="pSold" placeholder="Sold Quantity" required>
                     <textarea id="pDescription" rows="2" placeholder="Description..." required></textarea>
@@ -399,20 +273,20 @@
                 </form>
             </div>
 
-            <!-- ARTICLES & GUIDES CRUD FORM -->
+            <!-- ARTICLES CRUD FORM -->
             <div class="admin-box">
                 <h3 style="margin-bottom: 10px; color: var(--primary-blue); font-size: 1.1rem;"><i class="fa-solid fa-newspaper"></i> Add / Edit Articles & Guides</h3>
                 <form class="admin-form" id="articleForm" onsubmit="handleArticleSubmit(event)">
                     <input type="hidden" id="aDocId" value="">
-                    <input type="text" id="aTitle" placeholder="Article Title (e.g. 3D LED Sign Board Ke Fayde)" required>
-                    <textarea id="aContent" rows="4" placeholder="Detailed Article Content..." required></textarea>
+                    <input type="text" id="aTitle" placeholder="Article Title" required>
+                    <textarea id="aContent" rows="4" placeholder="Article Content..." required></textarea>
                     <button type="submit">Publish Article</button>
                 </form>
                 <h4 style="margin-top: 12px; font-size: 0.85rem; color: var(--primary-blue);">Published Articles:</h4>
                 <div id="adminArticleManageList" style="margin-top: 6px; display: flex; flex-direction: column; gap: 6px;"></div>
             </div>
 
-            <!-- FEEDBACK CRUD FORM -->
+            <!-- FEEDBACK FORM -->
             <div class="admin-box">
                 <h3 style="margin-bottom: 10px; color: var(--primary-blue); font-size: 1.1rem;"><i class="fa-solid fa-comments"></i> Manage Customer Feedbacks</h3>
                 <form class="admin-form" id="feedbackForm" onsubmit="handleFeedbackSubmit(event)">
@@ -420,77 +294,22 @@
                     <textarea id="fCommentText" rows="2" placeholder="Feedback Comment..." required></textarea>
                     <button type="submit">Save Feedback</button>
                 </form>
+                <h4 style="margin-top: 12px; font-size: 0.85rem; color: var(--primary-blue);">Saved Feedbacks:</h4>
+                <div id="adminFeedbackManageList" style="margin-top: 6px; display: flex; flex-direction: column; gap: 6px;"></div>
             </div>
         </section>
 
         <!-- PRODUCTS DISPLAY CATALOG -->
         <h2 class="section-title"><i class="fa-solid fa-box-open" style="color:var(--accent-yellow);"></i> Available Sign Boards & Branding Services</h2>
-        <div class="products-grid" id="productsCatalogGrid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1558403194-611308249627?w=500" class="product-img" alt="3D LED Letter Sign Board">
-                <div class="product-details">
-                    <h3 class="product-title">3D LED Letter Sign Board</h3>
-                    <div class="product-price">Rs. 10,000</div>
-                    <div>
-                        <span class="stock-badge stock-in">In Stock: 20</span>
-                        <span class="stock-badge stock-sold">Sold: 90</span>
-                    </div>
-                    <div style="color:var(--accent-yellow); font-size:0.8rem; margin-bottom:6px;">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <span style="color:var(--primary-blue); font-size:0.75rem; margin-left:4px;">4.9 / 5.0</span>
-                    </div>
-                    <p class="product-desc">Premium quality 3D LED glowing letters for shop fronts, restaurants, and plazas with full warranty.</p>
-                    <button onclick="openCheckoutModal('3D LED Letter Sign Board')" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Order via WhatsApp
-                    </button>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=500" class="product-img" alt="Acrylic Neon Glow Sign">
-                <div class="product-details">
-                    <h3 class="product-title">Acrylic Neon Glow Sign</h3>
-                    <div class="product-price">Rs. 7,500</div>
-                    <div>
-                        <span class="stock-badge stock-in">In Stock: 15</span>
-                        <span class="stock-badge stock-sold">Sold: 65</span>
-                    </div>
-                    <div style="color:var(--accent-yellow); font-size:0.8rem; margin-bottom:6px;">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <span style="color:var(--primary-blue); font-size:0.75rem; margin-left:4px;">4.9 / 5.0</span>
-                    </div>
-                    <p class="product-desc">Custom acrylic neon signs for indoor decoration, cafes, and modern office branding.</p>
-                    <button onclick="openCheckoutModal('Acrylic Neon Glow Sign')" class="buy-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Order via WhatsApp
-                    </button>
-                </div>
-            </div>
-        </div>
+        <div class="products-grid" id="productsCatalogGrid"></div>
 
         <!-- ARTICLES & BUYING GUIDES SECTION -->
         <h2 class="section-title" id="articlesSection" style="margin-top: 3.5rem;"><i class="fa-solid fa-newspaper" style="color:var(--accent-yellow);"></i> Articles & Buying Guides</h2>
-        <div class="articles-grid" id="articlesCatalogGrid">
-            <!-- Dynamic Articles Display -->
-        </div>
+        <div class="articles-grid" id="articlesCatalogGrid"></div>
 
-        <!-- CUSTOMER FEEDBACK SECTION (LIMITED TO 3 COMMENTS) -->
+        <!-- CUSTOMER FEEDBACK SECTION -->
         <h2 class="section-title" id="feedbackSection" style="margin-top: 3.5rem;"><i class="fa-solid fa-star" style="color:var(--accent-yellow);"></i> Verified Client Feedbacks</h2>
-        <div class="feedback-grid" id="feedbacksCatalogGrid">
-            <div class="feedback-card">
-                <div class="feedback-user">Muhammad Usman (Daska)</div>
-                <div class="feedback-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p style="color:var(--primary-blue); font-size:0.85rem; font-style:italic;">"NOOR Advertising Agency se 3D LED sign board banwaya hai, quality boht zabardast aur time par deliver hua."</p>
-            </div>
-            <div class="feedback-card">
-                <div class="feedback-user">Ali Raza (Sialkot)</div>
-                <div class="feedback-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p style="color:var(--primary-blue); font-size:0.85rem; font-style:italic;">"Acrylic neon glow sign ki finishing bohat pyari hai. Highly recommended shop!"</p>
-            </div>
-            <div class="feedback-card">
-                <div class="feedback-user">Ahmed Bilal (Gujranwala)</div>
-                <div class="feedback-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <p style="color:var(--primary-blue); font-size:0.85rem; font-style:italic;">"Best advertising services in the region. Rates bhi market se boht munasib hain."</p>
-            </div>
-        </div>
+        <div class="feedback-grid" id="feedbacksCatalogGrid"></div>
 
     </main>
 
@@ -499,7 +318,7 @@
     </footer>
 
     <script>
-        // MOUSE CLICK CIRCLE ANIMATION EFFECT
+        // MOUSE CLICK ANIMATION EFFECT
         document.addEventListener('click', function(e) {
             const circle = document.createElement('div');
             circle.className = 'click-circle-effect';
@@ -609,10 +428,9 @@
             const displayBox = document.getElementById('bankDetailsDisplay');
             const modalBox = document.getElementById('modalBankDetails');
             displayBox.innerHTML = '';
-            modalBox.innerHTML = '<p style="color: var(--accent-yellow); font-weight: bold;"><i class="fa-solid fa-mobile-screen"></i> Official Payment Details (Easypaisa):</p><p><strong>Account Name:</strong> IMTIAZ ASHRAF</p><p><strong>Easypaisa #:</strong> 03030623852</p>';
+            modalBox.innerHTML = '<p style="color: var(--accent-gold); font-weight: bold;"><i class="fa-solid fa-mobile-screen"></i> Official Payment Details (Easypaisa):</p><p><strong>Account Name:</strong> IMTIAZ ASHRAF</p><p><strong>Easypaisa #:</strong> 03030623852</p>';
 
             if (bankList.length > 0) {
-                displayBox.innerHTML = '';
                 bankList.forEach(b => {
                     displayBox.innerHTML += `<p><strong>${b.name}:</strong> ${b.number} | <strong>Account Title:</strong> ${b.title}</p>`;
                 });
@@ -628,7 +446,7 @@
                         <div style="background:#fff; padding:6px 10px; border-radius:6px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
                             <span><b>${b.name}</b> - ${b.number} (Title: ${b.title})</span>
                             <div>
-                                <button onclick="editBank('${b.id}', '${b.name.replace(/'/g, "\\'")}', '${b.title.replace(/'/g, "\\'")}', '${b.number}')" style="background:#f59e0b; color:#000; border:none; padding:3px 6px; border-radius:4px; cursor:pointer; font-weight:bold; margin-right:4px;">Edit</button>
+                                <button onclick="editBank('${b.id}', '${b.name.replace(/'/g, "\\\\'")}', '${b.title.replace(/'/g, "\\\\'")}', '${b.number}')" style="background:#f59e0b; color:#000; border:none; padding:3px 6px; border-radius:4px; cursor:pointer; font-weight:bold; margin-right:4px;">Edit</button>
                                 <button onclick="deleteBank('${b.id}')" style="background:#ef4444; color:#fff; border:none; padding:3px 6px; border-radius:4px; cursor:pointer; font-weight:bold;">Delete</button>
                             </div>
                         </div>`;
@@ -672,9 +490,7 @@
         onSnapshot(productsCol, (snap) => {
             productsList = [];
             snap.forEach(d => productsList.push({ id: d.id, ...d.data() }));
-            if (productsList.length > 0) {
-                renderProducts();
-            }
+            renderProducts();
         });
 
         function renderProducts() {
@@ -686,6 +502,7 @@
             grid.innerHTML = '';
             
             if (list.length === 0) {
+                grid.innerHTML = '<p style="color:var(--primary-blue); padding:1rem;">No sign board products available yet.</p>';
                 return;
             }
 
@@ -706,7 +523,7 @@
                             <span style="color:var(--primary-blue); font-size:0.75rem; margin-left:4px;">4.9 / 5.0</span>
                         </div>
                         <p class="product-desc">${p.desc}</p>
-                        <button onclick="openCheckoutModal('${p.title.replace(/'/g, "\\'")}')" class="buy-btn">
+                        <button onclick="openCheckoutModal('${p.title.replace(/'/g, "\\\\'")}')" class="buy-btn">
                             <i class="fa-brands fa-whatsapp"></i> Order via WhatsApp
                         </button>
                         ${isUserAdmin ? `<div style="display:flex; gap:6px; margin-top:8px;">
@@ -773,7 +590,7 @@
         window.deleteProduct = async function(id) {
             if (confirm("Are you sure you want to delete this product?")) {
                 await deleteDoc(doc(db, "noor_agency_products", id));
-                alert("Product Deleted Successfully!");
+                alert("Product Deleted Successfully from Database!");
             }
         };
 
@@ -854,15 +671,18 @@
             }
         };
 
-        // REAL-TIME FEEDBACKS SYNC (LIMITED TO 3)
+        // REAL-TIME FEEDBACKS SYNC
         onSnapshot(feedbackCol, (snap) => {
             feedbackList = [];
             snap.forEach(d => feedbackList.push({ id: d.id, ...d.data() }));
             
-            if (feedbackList.length > 0) {
-                const grid = document.getElementById('feedbacksCatalogGrid');
-                grid.innerHTML = '';
-                feedbackList.slice(0, 3).forEach(f => {
+            const grid = document.getElementById('feedbacksCatalogGrid');
+            grid.innerHTML = '';
+            
+            if (feedbackList.length === 0) {
+                grid.innerHTML = '<p style="color:var(--primary-blue);">No feedback available yet.</p>';
+            } else {
+                feedbackList.forEach(f => {
                     const card = document.createElement('div');
                     card.className = 'feedback-card';
                     card.innerHTML = `
@@ -873,6 +693,18 @@
                     grid.appendChild(card);
                 });
             }
+
+            const adminBox = document.getElementById('adminFeedbackManageList');
+            if (adminBox) {
+                adminBox.innerHTML = '';
+                feedbackList.forEach(f => {
+                    adminBox.innerHTML += `
+                        <div style="background:#fff; padding:6px 10px; border-radius:6px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+                            <span><b>${f.user}</b>: ${f.comment.substring(0, 30)}...</span>
+                            <button onclick="deleteFeedback('${f.id}')" style="background:#ef4444; color:#fff; border:none; padding:3px 6px; border-radius:4px; cursor:pointer; font-weight:bold;">Delete</button>
+                        </div>`;
+                });
+            }
         });
 
         window.handleFeedbackSubmit = async function(e) {
@@ -880,14 +712,14 @@
             const user = document.getElementById('fUserName').value.trim();
             const comment = document.getElementById('fCommentText').value.trim();
             await addDoc(feedbackCol, { user, comment, timestamp: Date.now() });
-            document.getElementById('fUserName').value = '';
-            document.getElementById('fCommentText').value = '';
+            document.getElementById('feedbackForm').reset();
             alert("Feedback Added Successfully!");
         };
 
         window.deleteFeedback = async function(id) {
-            if (confirm("Delete feedback?")) {
+            if (confirm("Delete this feedback?")) {
                 await deleteDoc(doc(db, "noor_agency_feedbacks", id));
+                alert("Feedback Deleted Successfully!");
             }
         };
 
