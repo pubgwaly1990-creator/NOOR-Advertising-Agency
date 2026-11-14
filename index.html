@@ -277,6 +277,8 @@
                     <textarea id="pDescription" rows="2" placeholder="Description..." required></textarea>
                     <button type="submit" id="productSaveBtn">Save Product</button>
                 </form>
+                <h4 style="margin-top: 12px; font-size: 0.85rem; color: var(--primary-blue);">Manage Saved Products:</h4>
+                <div id="adminProductsManageList" style="margin-top: 6px; display: flex; flex-direction: column; gap: 6px;"></div>
             </div>
 
             <!-- ARTICLES CRUD FORM -->
@@ -566,6 +568,8 @@
                 document.getElementById('productForm').reset();
                 document.getElementById('pDocId').value = '';
                 document.getElementById('pExistingImg').value = '';
+                document.getElementById('formProductHeading').innerHTML = '<i class="fa-solid fa-box-open"></i> Add / Edit Sign Board Product';
+                document.getElementById('productSaveBtn').innerText = 'Save Product';
             };
 
             if (fileInput.files && fileInput.files[0]) {
@@ -579,9 +583,25 @@
             }
         };
 
+        window.editProduct = function(id) {
+            const p = productsList.find(item => item.id === id);
+            if (!p) return;
+            document.getElementById('pDocId').value = p.id;
+            document.getElementById('pTitle').value = p.title;
+            document.getElementById('pCost').value = p.price;
+            document.getElementById('pInStock').value = p.inStock;
+            document.getElementById('pSold').value = p.sold;
+            document.getElementById('pDescription').value = p.desc;
+            document.getElementById('pExistingImg').value = p.image;
+            document.getElementById('formProductHeading').innerHTML = '<i class="fa-solid fa-box-open"></i> Edit Product: ' + p.title;
+            document.getElementById('productSaveBtn').innerText = 'Update Product';
+            window.scrollTo({ top: 400, behavior: 'smooth' });
+        };
+
         window.deleteProduct = async function(id) {
             if (confirm("Delete this product?")) {
                 await deleteDoc(doc(db, "noor_agency_products", id));
+                alert("Product Deleted Successfully!");
             }
         };
 
