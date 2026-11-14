@@ -51,6 +51,9 @@
         }
         .left-social-btn:hover { transform: scale(1.15) translateX(5px); }
         .left-social-btn.wa { background: #25D366; }
+        .left-social-btn.fb { background: #1877F2; }
+        .left-social-btn.tt { background: #000000; }
+        .left-social-btn.ig { background: #E4405F; }
 
         /* HEADER & LOGO */
         header {
@@ -150,9 +153,12 @@
 </head>
 <body>
 
-    <!-- LEFT SIDEBAR FIXED SOCIAL BUTTON -->
+    <!-- LEFT SIDEBAR FIXED SOCIAL BUTTONS -->
     <div class="left-social-bar">
         <a href="https://wa.me/923030623852" target="_blank" class="left-social-btn wa" title="WhatsApp Direct"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://facebook.com" target="_blank" class="left-social-btn fb" title="Facebook Page"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://tiktok.com" target="_blank" class="left-social-btn tt" title="TikTok Profile"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://instagram.com" target="_blank" class="left-social-btn ig" title="Instagram Profile"><i class="fa-brands fa-instagram"></i></a>
     </div>
 
     <!-- CHECKOUT MODAL -->
@@ -315,6 +321,11 @@
 
     <footer>
         <p>&copy; 2026 NOOR Advertising Agency. Developed for Usman Amjad.</p>
+        <div style="margin-top: 10px; display: flex; justify-content: center; gap: 15px; font-size: 1.1rem;">
+            <a href="https://facebook.com" target="_blank" style="color: var(--primary-blue);"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://tiktok.com" target="_blank" style="color: var(--primary-blue);"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://instagram.com" target="_blank" style="color: var(--primary-blue);"><i class="fa-brands fa-instagram"></i></a>
+        </div>
     </footer>
 
     <script>
@@ -466,7 +477,7 @@
                 alert("Bank Account Updated Successfully!");
             } else {
                 await addDoc(bankCol, { name, title, number });
-                alert("New Bank Account Added Successfully!");
+                alert("Bank Account Added Successfully!");
             }
             document.getElementById('bankForm').reset();
             document.getElementById('bDocId').value = '';
@@ -477,12 +488,12 @@
             document.getElementById('bBankName').value = name;
             document.getElementById('bAccTitle').value = title;
             document.getElementById('bAccNum').value = number;
+            window.scrollTo({ top: 300, behavior: 'smooth' });
         };
 
         window.deleteBank = async function(id) {
-            if (confirm("Delete this Bank Account?")) {
+            if (confirm("Are you sure you want to delete this bank account?")) {
                 await deleteDoc(doc(db, "noor_agency_banks", id));
-                alert("Bank Account Deleted Successfully!");
             }
         };
 
@@ -490,48 +501,45 @@
         onSnapshot(productsCol, (snap) => {
             productsList = [];
             snap.forEach(d => productsList.push({ id: d.id, ...d.data() }));
+            renderProductsGrid(productsList);
             renderProducts();
         });
 
-        function renderProducts() {
-            renderProductsGrid(productsList);
+        function renderProductsGrid(arr) {
+            const grid = document.getElementById('productsCatalogGrid');
+            if(!grid) return;
+            grid.innerHTML = '';
+            arr.forEach(p => {
+                const badge = p.inStock > 0 ? `<span class="stock-badge stock-in">In Stock (${p.inStock})</span>` : `<span class="stock-badge stock-sold">Sold Out</span>`;
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <img src="${p.image}" class="product-img" alt="${p.title}">
+                        <div class="product-details">
+                            <h4 class="product-title">${p.title}</h4>
+                            <div class="product-price">${p.price}</div>
+                            ${badge}
+                            <p class="product-desc">${p.desc}</p>
+                            <button class="buy-btn" onclick="openCheckoutModal('${p.title.replace(/'/g, "\\\\'")}', '${p.price}')">
+                                <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+                            </button>
+                        </div>
+                    </div>`;
+            });
         }
 
-        function renderProductsGrid(list) {
-            const grid = document.getElementById('productsCatalogGrid');
-            grid.innerHTML = '';
-            
-            if (list.length === 0) {
-                grid.innerHTML = '<p style="color:var(--primary-blue); padding:1rem;">No sign board products available yet.</p>';
-                return;
-            }
-
-            list.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <img src="${p.img || 'https://via.placeholder.com/300'}" class="product-img" alt="${p.title}">
-                    <div class="product-details">
-                        <h3 class="product-title">${p.title}</h3>
-                        <div class="product-price">${p.price}</div>
+        function renderProducts() {
+            const box = document.getElementById('adminProductsManageList');
+            if(!box) return;
+            box.innerHTML = '';
+            productsList.forEach(p => {
+                box.innerHTML += `
+                    <div style="background:#fff; padding:6px 10px; border-radius:6px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+                        <span><b>${p.title}</b> - ${p.price}</span>
                         <div>
-                            <span class="stock-badge stock-in">In Stock: ${p.inStock || 10}</span>
-                            <span class="stock-badge stock-sold">Sold: ${p.sold || 50}</span>
+                            <button onclick="editProduct('${p.id}')" style="background:#f59e0b; color:#000; border:none; padding:3px 6px; border-radius:4px; cursor:pointer; font-weight:bold; margin-right:4px;">Edit</button>
+                            <button onclick="deleteProduct('${p.id}')" style="background:#ef4444; color:#fff; border:none; padding:3px 6px; border-radius:4px; cursor:pointer; font-weight:bold;">Delete</button>
                         </div>
-                        <div style="color:var(--accent-yellow); font-size:0.8rem; margin-bottom:6px;">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            <span style="color:var(--primary-blue); font-size:0.75rem; margin-left:4px;">4.9 / 5.0</span>
-                        </div>
-                        <p class="product-desc">${p.desc}</p>
-                        <button onclick="openCheckoutModal('${p.title.replace(/'/g, "\\\\'")}')" class="buy-btn">
-                            <i class="fa-brands fa-whatsapp"></i> Order via WhatsApp
-                        </button>
-                        ${isUserAdmin ? `<div style="display:flex; gap:6px; margin-top:8px;">
-                            <button onclick="editProduct('${p.id}')" style="background:#f59e0b; color:#000; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; flex:1; font-weight:bold; font-size:0.75rem;">Edit</button>
-                            <button onclick="deleteProduct('${p.id}')" style="background:#ef4444; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; flex:1; font-weight:bold; font-size:0.75rem;">Delete</button>
-                        </div>` : ''}
                     </div>`;
-                grid.appendChild(card);
             });
         }
 
@@ -540,23 +548,20 @@
             const id = document.getElementById('pDocId').value;
             const title = document.getElementById('pTitle').value.trim();
             const price = document.getElementById('pCost').value.trim();
-            const inStock = parseInt(document.getElementById('pInStock').value) || 10;
-            const sold = parseInt(document.getElementById('pSold').value) || 50;
+            const inStock = parseInt(document.getElementById('pInStock').value) || 0;
+            const sold = parseInt(document.getElementById('pSold').value) || 0;
             const desc = document.getElementById('pDescription').value.trim();
             const fileInput = document.getElementById('pImageFile');
-            let img = document.getElementById('pExistingImg').value;
 
-            const saveToFirestore = async (finalImgUrl) => {
+            let imageUrl = document.getElementById('pExistingImg').value || "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80";
+
+            const saveRecord = async (img) => {
                 if (id) {
-                    await updateDoc(doc(db, "noor_agency_products", id), { 
-                        title, price, img: finalImgUrl || img, inStock, sold, desc 
-                    });
-                    alert("Product Successfully Updated!");
+                    await updateDoc(doc(db, "noor_agency_products", id), { title, price, inStock, sold, desc, image: img });
+                    alert("Product Updated Successfully!");
                 } else {
-                    await addDoc(productsCol, { 
-                        title, price, img: finalImgUrl || 'https://via.placeholder.com/300', inStock, sold, desc, timestamp: Date.now() 
-                    });
-                    alert("New Product Successfully Added!");
+                    await addDoc(productsCol, { title, price, inStock, sold, desc, image: img });
+                    alert("Product Added Successfully!");
                 }
                 document.getElementById('productForm').reset();
                 document.getElementById('pDocId').value = '';
@@ -565,32 +570,18 @@
 
             if (fileInput.files && fileInput.files[0]) {
                 const reader = new FileReader();
-                reader.onload = async function(uploadEvent) {
-                    await saveToFirestore(uploadEvent.target.result);
+                reader.onload = async function(evt) {
+                    await saveRecord(evt.target.result);
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             } else {
-                await saveToFirestore(img);
+                await saveRecord(imageUrl);
             }
         };
 
-        window.editProduct = function(id) {
-            const p = productsList.find(item => item.id === id);
-            if (!p) return;
-            document.getElementById('pDocId').value = p.id;
-            document.getElementById('pTitle').value = p.title;
-            document.getElementById('pCost').value = p.price;
-            document.getElementById('pExistingImg').value = p.img || '';
-            document.getElementById('pInStock').value = p.inStock || 10;
-            document.getElementById('pSold').value = p.sold || 50;
-            document.getElementById('pDescription').value = p.desc || '';
-            window.scrollTo({ top: 400, behavior: 'smooth' });
-        };
-
         window.deleteProduct = async function(id) {
-            if (confirm("Are you sure you want to delete this product?")) {
+            if (confirm("Delete this product?")) {
                 await deleteDoc(doc(db, "noor_agency_products", id));
-                alert("Product Deleted Successfully from Database!");
             }
         };
 
@@ -598,76 +589,48 @@
         onSnapshot(articleCol, (snap) => {
             articleList = [];
             snap.forEach(d => articleList.push({ id: d.id, ...d.data() }));
+            renderArticlesGrid();
             renderArticles();
         });
 
-        function renderArticles() {
+        function renderArticlesGrid() {
             const grid = document.getElementById('articlesCatalogGrid');
+            if(!grid) return;
             grid.innerHTML = '';
-            
-            if (articleList.length === 0) {
-                grid.innerHTML = '<p style="color:var(--primary-blue);">No articles published yet.</p>';
-            } else {
-                articleList.forEach(a => {
-                    const card = document.createElement('div');
-                    card.className = 'article-card';
-                    card.innerHTML = `
+            articleList.forEach(a => {
+                grid.innerHTML += `
+                    <div class="article-card">
                         <h3>${a.title}</h3>
                         <p>${a.content}</p>
-                        ${isUserAdmin ? `<div style="display:flex; gap:6px; margin-top:auto;">
-                            <button onclick="editArticle('${a.id}')" style="background:#f59e0b; color:#000; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; flex:1; font-weight:bold; font-size:0.75rem;">Edit</button>
-                            <button onclick="deleteArticle('${a.id}')" style="background:#ef4444; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; flex:1; font-weight:bold; font-size:0.75rem;">Delete</button>
-                        </div>` : ''}`;
-                    grid.appendChild(card);
-                });
-            }
+                    </div>`;
+            });
+        }
 
-            const adminBox = document.getElementById('adminArticleManageList');
-            if (adminBox) {
-                adminBox.innerHTML = '';
-                articleList.forEach(a => {
-                    adminBox.innerHTML += `
-                        <div style="background:#fff; padding:6px 10px; border-radius:6px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
-                            <span><b>${a.title}</b></span>
-                            <div>
-                                <button onclick="editArticle('${a.id}')" style="background:#f59e0b; color:#000; border:none; padding:3px 6px; border-radius:4px; cursor:pointer; font-weight:bold; margin-right:4px;">Edit</button>
-                                <button onclick="deleteArticle('${a.id}')" style="background:#ef4444; color:#fff; border:none; padding:3px 6px; border-radius:4px; cursor:pointer; font-weight:bold;">Delete</button>
-                            </div>
-                        </div>`;
-                });
-            }
+        function renderArticles() {
+            const box = document.getElementById('adminArticleManageList');
+            if(!box) return;
+            box.innerHTML = '';
+            articleList.forEach(a => {
+                box.innerHTML += `
+                    <div style="background:#fff; padding:6px 10px; border-radius:6px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+                        <span><b>${a.title}</b></span>
+                        <button onclick="deleteArticle('${a.id}')" style="background:#ef4444; color:#fff; border:none; padding:3px 6px; border-radius:4px; cursor:pointer; font-weight:bold;">Delete</button>
+                    </div>`;
+            });
         }
 
         window.handleArticleSubmit = async function(e) {
             e.preventDefault();
-            const id = document.getElementById('aDocId').value;
             const title = document.getElementById('aTitle').value.trim();
             const content = document.getElementById('aContent').value.trim();
-
-            if (id) {
-                await updateDoc(doc(db, "noor_agency_articles", id), { title, content });
-                alert("Article Updated Successfully!");
-            } else {
-                await addDoc(articleCol, { title, content, timestamp: Date.now() });
-                alert("New Article Published Successfully!");
-            }
+            await addDoc(articleCol, { title, content });
+            alert("Article Published Successfully!");
             document.getElementById('articleForm').reset();
-            document.getElementById('aDocId').value = '';
-        };
-
-        window.editArticle = function(id) {
-            const a = articleList.find(item => item.id === id);
-            if (!a) return;
-            document.getElementById('aDocId').value = a.id;
-            document.getElementById('aTitle').value = a.title;
-            document.getElementById('aContent').value = a.content;
-            window.scrollTo({ top: 400, behavior: 'smooth' });
         };
 
         window.deleteArticle = async function(id) {
-            if (confirm("Delete this Article?")) {
+            if (confirm("Delete this article?")) {
                 await deleteDoc(doc(db, "noor_agency_articles", id));
-                alert("Article Deleted Successfully!");
             }
         };
 
@@ -675,68 +638,69 @@
         onSnapshot(feedbackCol, (snap) => {
             feedbackList = [];
             snap.forEach(d => feedbackList.push({ id: d.id, ...d.data() }));
-            
-            const grid = document.getElementById('feedbacksCatalogGrid');
-            grid.innerHTML = '';
-            
-            if (feedbackList.length === 0) {
-                grid.innerHTML = '<p style="color:var(--primary-blue);">No feedback available yet.</p>';
-            } else {
-                feedbackList.forEach(f => {
-                    const card = document.createElement('div');
-                    card.className = 'feedback-card';
-                    card.innerHTML = `
-                        <div class="feedback-user">${f.user}</div>
-                        <div class="feedback-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p style="color:var(--primary-blue); font-size:0.85rem; font-style:italic;">"${f.comment}"</p>
-                        ${isUserAdmin ? `<button onclick="deleteFeedback('${f.id}')" style="background:#ef4444; color:#fff; border:none; padding:2px 6px; border-radius:4px; margin-top:6px; cursor:pointer; font-size:0.7rem;">Delete</button>` : ''}`;
-                    grid.appendChild(card);
-                });
-            }
-
-            const adminBox = document.getElementById('adminFeedbackManageList');
-            if (adminBox) {
-                adminBox.innerHTML = '';
-                feedbackList.forEach(f => {
-                    adminBox.innerHTML += `
-                        <div style="background:#fff; padding:6px 10px; border-radius:6px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
-                            <span><b>${f.user}</b>: ${f.comment.substring(0, 30)}...</span>
-                            <button onclick="deleteFeedback('${f.id}')" style="background:#ef4444; color:#fff; border:none; padding:3px 6px; border-radius:4px; cursor:pointer; font-weight:bold;">Delete</button>
-                        </div>`;
-                });
-            }
+            renderFeedbacksGrid();
+            renderFeedbacks();
         });
+
+        function renderFeedbacksGrid() {
+            const grid = document.getElementById('feedbacksCatalogGrid');
+            if(!grid) return;
+            grid.innerHTML = '';
+            feedbackList.forEach(f => {
+                grid.innerHTML += `
+                    <div class="feedback-card">
+                        <div class="feedback-user">${f.name}</div>
+                        <div class="feedback-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p style="font-size:0.82rem; color:var(--text-muted);">${f.comment}</p>
+                    </div>`;
+            });
+        }
+
+        function renderFeedbacks() {
+            const box = document.getElementById('adminFeedbackManageList');
+            if(!box) return;
+            box.innerHTML = '';
+            feedbackList.forEach(f => {
+                box.innerHTML += `
+                    <div style="background:#fff; padding:6px 10px; border-radius:6px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+                        <span><b>${f.name}</b>: ${f.comment}</span>
+                        <button onclick="deleteFeedback('${f.id}')" style="background:#ef4444; color:#fff; border:none; padding:3px 6px; border-radius:4px; cursor:pointer; font-weight:bold;">Delete</button>
+                    </div>`;
+            });
+        }
 
         window.handleFeedbackSubmit = async function(e) {
             e.preventDefault();
-            const user = document.getElementById('fUserName').value.trim();
+            const name = document.getElementById('fUserName').value.trim();
             const comment = document.getElementById('fCommentText').value.trim();
-            await addDoc(feedbackCol, { user, comment, timestamp: Date.now() });
+            await addDoc(feedbackCol, { name, comment });
+            alert("Feedback Saved Successfully!");
             document.getElementById('feedbackForm').reset();
-            alert("Feedback Added Successfully!");
         };
 
         window.deleteFeedback = async function(id) {
-            if (confirm("Delete this feedback?")) {
+            if (confirm("Delete feedback?")) {
                 await deleteDoc(doc(db, "noor_agency_feedbacks", id));
-                alert("Feedback Deleted Successfully!");
             }
         };
 
-        let currentOrderTitle = "";
-        window.openCheckoutModal = function(title) {
-            currentOrderTitle = title;
+        let selectedProductForOrder = "";
+        window.openCheckoutModal = function(title, price) {
+            selectedProductForOrder = `${title} (${price})`;
             document.getElementById('modalProductTitle').innerText = `Order: ${title}`;
             document.getElementById('checkoutModal').style.display = 'flex';
         };
-        window.closeCheckoutModal = function() { document.getElementById('checkoutModal').style.display = 'none'; };
+
+        window.closeCheckoutModal = function() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        };
 
         window.sendWhatsAppOrder = function(e) {
             e.preventDefault();
-            const name = document.getElementById('cName').value;
-            const phone = document.getElementById('cPhone').value;
-            const msg = `New Order (NOOR Advertising Agency):%0AProduct: ${currentOrderTitle}%0AClient Name: ${name}%0APhone: ${phone}`;
-            window.open(`https://wa.me/923030623852?text=${msg}`, '_blank');
+            const name = document.getElementById('cName').value.trim();
+            const phone = document.getElementById('cPhone').value.trim();
+            const msg = `Assalam-o-Alaikum, I want to order:\nProduct: ${selectedProductForOrder}\nName: ${name}\nPhone: ${phone}`;
+            window.open(`https://wa.me/923030623852?text=${encodeURIComponent(msg)}`, '_blank');
             closeCheckoutModal();
         };
     </script>
